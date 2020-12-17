@@ -23,6 +23,7 @@ namespace NetCore.Web.V31
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // .Net Core 2.1의 AddMvc()에서 다음과 같이 메서드명이 변경됨. 
             services.AddControllersWithViews();
         }
 
@@ -42,14 +43,19 @@ namespace NetCore.Web.V31
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            // 아래의 app.UseEndpoints()메서드를 라우팅과 연결하기 위해 사용됨.
             app.UseRouting();
 
+            // 승인권한을 사용하기 위해 추가됨.
             app.UseAuthorization();
 
+            // .Net Core 2.1의 UseMvc()에서 다음과 같이 메서드명이 변경됨. 
             app.UseEndpoints(endpoints =>
             {
+                // .Net Core 2.1의 UseMvc()에서 다음과 같이 메서드명이 변경됨.
                 endpoints.MapControllerRoute(
                     name: "default",
+                    // .Net Core 2.1의 template에서 다음과 같이 파라미터명이 변경됨.
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
