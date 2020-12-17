@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+ï»¿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +23,7 @@ namespace NetCore.Web.V31
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // .Net Core 2.1ÀÇ AddMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ. 
+            // .Net Core 2.1ì˜ AddMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨. 
             services.AddControllersWithViews();
         }
 
@@ -43,19 +43,19 @@ namespace NetCore.Web.V31
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            // ¾Æ·¡ÀÇ app.UseEndpoints()¸Ş¼­µå¸¦ ¶ó¿ìÆÃ°ú ¿¬°áÇÏ±â À§ÇØ »ç¿ëµÊ.
+            // ì•„ë˜ì˜ app.UseEndpoints()ë©”ì„œë“œë¥¼ ë¼ìš°íŒ…ê³¼ ì—°ê²°í•˜ê¸° ìœ„í•´ ì‚¬ìš©ë¨.
             app.UseRouting();
 
-            // ½ÂÀÎ±ÇÇÑÀ» »ç¿ëÇÏ±â À§ÇØ Ãß°¡µÊ.
+            // ìŠ¹ì¸ê¶Œí•œì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì¶”ê°€ë¨.
             app.UseAuthorization();
 
-            // .Net Core 2.1ÀÇ UseMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ. 
+            // .Net Core 2.1ì˜ UseMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨. 
             app.UseEndpoints(endpoints =>
             {
-                // .Net Core 2.1ÀÇ UseMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ.
+                // .Net Core 2.1ì˜ UseMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨.
                 endpoints.MapControllerRoute(
                     name: "default",
-                    // .Net Core 2.1ÀÇ template¿¡¼­ ´ÙÀ½°ú °°ÀÌ ÆÄ¶ó¹ÌÅÍ¸íÀÌ º¯°æµÊ.
+                    // .Net Core 2.1ì˜ templateì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ íŒŒë¼ë¯¸í„°ëª…ì´ ë³€ê²½ë¨.
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
