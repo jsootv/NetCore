@@ -66,7 +66,10 @@ namespace NetCore.Web.V31.Controllers
             return View(new LoginInfo());
         }
 
-        [HttpPost("/Login")]
+        //[HttpPost("/Login")]
+        // Action만 지정하던 것에서 Controller까지 같이 지정하는 것으로
+        // .Net Core 3.1에서 변경됨.
+        [HttpPost("/{controller}/Login")]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
         //Data => Services => Web
@@ -221,7 +224,10 @@ namespace NetCore.Web.V31.Controllers
             return View(user);
         }
 
-        [HttpPost("/Withdrawn")]
+        //[HttpPost("/Withdrawn")]
+        // Action만 지정하던 것에서 Controller까지 같이 지정하는 것으로
+        // .Net Core 3.1에서 변경됨.
+        [HttpPost("/{controller}/Withdrawn")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> WithdrawnAsync(WithdrawnInfo withdrawn)
         {
@@ -253,7 +259,10 @@ namespace NetCore.Web.V31.Controllers
             return View("Index", withdrawn);
         }
 
-        [HttpGet("/LogOut")]
+        //[HttpGet("/LogOut")]
+        // Action만 지정하던 것에서 Controller까지 같이 지정하는 것으로
+        // .Net Core 3.1에서 변경됨.
+        [HttpPost("/{controller}/LogOut")]
         public async Task<IActionResult> LogOutAsync()
         {
             await _context.SignOutAsync(scheme: CookieAuthenticationDefaults.AuthenticationScheme);
