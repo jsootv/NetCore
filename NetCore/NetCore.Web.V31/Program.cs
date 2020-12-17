@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+ï»¿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,7 +16,7 @@ namespace NetCore.Web.V31
         public static void Main(string[] args)
         {
             //CreateHostBuilder(args).Build().Run();
-            #region °­ÀÇ³»¿ë
+            #region ê°•ì˜ë‚´ìš©
             var webHost = CreateHostBuilder(args).Build();
 
             using (var scope = webHost.Services.CreateScope())
@@ -33,13 +33,13 @@ namespace NetCore.Web.V31
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                #region °­ÀÇ³»¿ë
+                #region ê°•ì˜ë‚´ìš©
                 .ConfigureLogging(builder => builder.AddFile(options =>
                 {
-                    options.LogDirectory = "Logs";      //·Î±×ÀúÀåÆú´õ
-                    options.FileName = "log-";          //·Î±×ÆÄÀÏÁ¢µÎ¾î. log-20180000.txt
-                    options.FileSizeLimit = null;       //·Î±×ÆÄÀÏ »çÀÌÁî Á¦ÇÑ (10MB)
-                    options.RetainedFileCountLimit = null;  //·Î±×ÆÄÀÏ º¸À¯°¹¼ö (2)
+                    options.LogDirectory = "Logs";      //ë¡œê·¸ì €ìž¥í´ë”
+                    options.FileName = "log-";          //ë¡œê·¸íŒŒì¼ì ‘ë‘ì–´. log-20180000.txt
+                    options.FileSizeLimit = null;       //ë¡œê·¸íŒŒì¼ ì‚¬ì´ì¦ˆ ì œí•œ (10MB)
+                    options.RetainedFileCountLimit = null;  //ë¡œê·¸íŒŒì¼ ë³´ìœ ê°¯ìˆ˜ (2)
                 }))
                 #endregion
                 .ConfigureWebHostDefaults(webBuilder =>
