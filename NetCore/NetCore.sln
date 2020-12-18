@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Databases", "NetCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Web.V31", "NetCore.Web.V31\NetCore.Web.V31.csproj", "{EB60A6BD-7A04-48B8-B3EC-42257EA96C61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Web.V5", "NetCore.Web.V5\NetCore.Web.V5.csproj", "{6437C517-FED5-48DF-852E-F7111D22901A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +57,6 @@ Global
 		{EB60A6BD-7A04-48B8-B3EC-42257EA96C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB60A6BD-7A04-48B8-B3EC-42257EA96C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB60A6BD-7A04-48B8-B3EC-42257EA96C61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6437C517-FED5-48DF-852E-F7111D22901A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6437C517-FED5-48DF-852E-F7111D22901A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6437C517-FED5-48DF-852E-F7111D22901A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6437C517-FED5-48DF-852E-F7111D22901A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
