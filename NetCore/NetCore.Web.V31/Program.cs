@@ -41,7 +41,8 @@ namespace NetCore.Web.V31
                     options.FileSizeLimit = null;       //로그파일 사이즈 제한 (10MB)
                     options.RetainedFileCountLimit = null;  //로그파일 보유갯수 (2)
                 }))
-                #endregion
+        #endregion
+                // .Net Core 2.1의 .UseStartup<Startup>()이 다음과 같이 변경됨.
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
