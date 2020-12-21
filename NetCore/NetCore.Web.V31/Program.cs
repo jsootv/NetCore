@@ -31,7 +31,9 @@ namespace NetCore.Web.V31
             #endregion
         }
 
+        // .Net Core 2.1의 IWebHostBuilder에서 다음과 같이 메서드 type이 변경됨.
         public static IHostBuilder CreateHostBuilder(string[] args) =>
+            // .Net Core 2.1의 WebHost에서 다음과 같이 메서드 type이 변경됨.
             Host.CreateDefaultBuilder(args)
                 #region 강의내용
                 .ConfigureLogging(builder => builder.AddFile(options =>
@@ -42,7 +44,8 @@ namespace NetCore.Web.V31
                     options.RetainedFileCountLimit = null;  //로그파일 보유갯수 (2)
                 }))
         #endregion
-                // .Net Core 2.1의 .UseStartup<Startup>()이 다음과 같이 변경됨.
+                // .Net Core 2.1의 .UseStartup<Startup>()이 다음과 같이
+                // Lambda식으로 변경됨.
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
