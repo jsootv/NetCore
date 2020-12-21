@@ -120,7 +120,7 @@ namespace NetCore.Web.V31
             // .Net Core 2.1의 UseMvc()에서 다음과 같이 메서드명이 변경됨. 
             app.UseEndpoints(endpoints =>
             {
-                // .Net Core 2.1의 UseMvc()에서 다음과 같이 메서드명이 변경됨.
+                // .Net Core 2.1의 MapRoute()에서 다음과 같이 메서드명이 변경됨.
                 endpoints.MapControllerRoute(
                     name: "default",
                     // .Net Core 2.1의 template에서 다음과 같이 파라미터명이 변경됨.
