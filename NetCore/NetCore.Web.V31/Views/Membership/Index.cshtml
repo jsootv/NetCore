@@ -25,8 +25,8 @@
 {
     <div class="text-danger">@($"{userId}({userDataInfos[2]})님의 권한은 {userRoleId}({userDataInfos[0]})입니다.")</div>
     @* .Net Core 3.1에서 asp-action="LogOutAsync", asp-action="WithdrawnAsync" 속성값이 다음과 같이 변경됨.*@
-    <a asp-controller="Membership" asp-action="LogOutAsync" class="btn btn-primary">멤버십 로그아웃</a>
-    <form method="post" asp-controller="Membership" asp-action="WithdrawnAsync" onsubmit="btnWithdrawn.disabled = true; return true;">
+    <a asp-controller="Membership" asp-action="LogOut" class="btn btn-primary">멤버십 로그아웃</a>
+    <form method="post" asp-controller="Membership" asp-action="Withdrawn" onsubmit="btnWithdrawn.disabled = true; return true;">
         <input type="hidden" name="UserId" value="@Context.User.Identity.Name" />
         <input type="password" name="Password" placeholder="Password" value="" autofocus />
         <button type="submit" name="btnWithdrawn" class="btn btn-default">멤버십 사용자 탈퇴</button>
