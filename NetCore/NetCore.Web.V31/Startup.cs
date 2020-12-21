@@ -85,6 +85,7 @@ namespace NetCore.Web.V31
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // .Net Core 2.1의 IHostingEnvironment에서 다음과 같이 두번째 파라미터 type이 변경됨.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
