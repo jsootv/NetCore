@@ -1,4 +1,4 @@
-ï»¿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,23 +30,23 @@ namespace NetCore.Web.V5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #region ê°•ì˜ë‚´ìš©A
+            #region °­ÀÇ³»¿ëA
             Common.SetDataProtection(services, @"D:\DataProtector\", "NetCore", Enums.CryptoType.CngCbc);
 
-            //ê»ë°ê¸°                         ë‚´ìš©ë¬¼
-            //IUser ì¸í„°í˜ì´ìŠ¤ê°€ UserService í´ë˜ìŠ¤ë¥¼ ë°›ê¸° ìœ„í•´ servicesì— ë“±ë¡í•´ì•¼ í•¨.
+            //²®µ¥±â                         ³»¿ë¹°
+            //IUser ÀÎÅÍÆäÀÌ½º°¡ UserService Å¬·¡½º¸¦ ¹Ş±â À§ÇØ services¿¡ µî·ÏÇØ¾ß ÇÔ.
             services.AddScoped<DBFirstDbInitializer>();
             services.AddScoped<IUser, UserService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             services.AddHttpContextAccessor();
 
-            //DBì ‘ì†ì •ë³´, Migrations í”„ë¡œì íŠ¸ ì§€ì •
+            //DBÁ¢¼ÓÁ¤º¸, Migrations ÇÁ·ÎÁ§Æ® ÁöÁ¤
             //services.AddDbContext<CodeFirstDbContext>(options =>
             //            options.UseSqlServer(connectionString: Configuration.GetConnectionString(name: "DefaultConnection"),
             //                                 sqlServerOptionsAction: mig => mig.MigrationsAssembly(assemblyName: "NetCore.Migrations")));
 
-            //DBì ‘ì†ì •ë³´ë§Œ
+            //DBÁ¢¼ÓÁ¤º¸¸¸
             services.AddDbContext<DBFirstDbContext>(options =>
                         options.UseSqlServer(connectionString: Configuration.GetConnectionString(name: "DBFirstDBConnection")));
 
@@ -59,11 +59,11 @@ namespace NetCore.Web.V5
             });
             #endregion
 
-            // .Net Core 2.1ì˜ AddMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨. 
+            // .Net Core 2.1ÀÇ AddMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ. 
             services.AddControllersWithViews();
 
-            #region ê°•ì˜ë‚´ìš©B
-            //ì‹ ì›ë³´ì¦ê³¼ ìŠ¹ì¸ê¶Œí•œ
+            #region °­ÀÇ³»¿ëB
+            //½Å¿øº¸Áõ°ú ½ÂÀÎ±ÇÇÑ
             services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>
                     {
@@ -78,8 +78,8 @@ namespace NetCore.Web.V5
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".NetCore.Session";
-                //ì„¸ì…˜ ì œí•œì‹œê°„
-                options.IdleTimeout = TimeSpan.FromMinutes(30); //ê¸°ë³¸ê°’ì€ 20ë¶„
+                //¼¼¼Ç Á¦ÇÑ½Ã°£
+                options.IdleTimeout = TimeSpan.FromMinutes(30); //±âº»°ªÀº 20ºĞ
             });
             #endregion
         }
@@ -100,35 +100,29 @@ namespace NetCore.Web.V5
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            /*â­â­â­â­â­â­â­â­
-            app.UseRouting(), app.UseAuthentication(), app.UseAuthorization(),
-            app.UseSession(), app.UseEndpoints()
-            ì´ë ‡ê²Œ 5ê°œì˜ ë©”ì„œë“œëŠ” ë°˜ë“œì‹œ ìˆœì„œë¥¼ ì§€ì¼œì•¼ ì˜¬ë°”ë¡œ ì‘ë™í•¨.
-            â­â­â­â­â­â­â­â­*/
-
-            // ì•„ë˜ì˜ app.UseEndpoints()ë©”ì„œë“œë¥¼ ë¼ìš°íŒ…ê³¼ ì—°ê²°í•˜ê¸° ìœ„í•´ ì‚¬ìš©ë¨.
+            // ¾Æ·¡ÀÇ app.UseEndpoints()¸Ş¼­µå¸¦ ¶ó¿ìÆÃ°ú ¿¬°áÇÏ±â À§ÇØ »ç¿ëµÊ.
             app.UseRouting();
 
-            ////ê°•ì˜ë‚´ìš©
-            //ì‹ ì›ë³´ì¦ë§Œ
-            app.UseAuthentication();
-
-            // ê¶Œí•œì„ ìŠ¹ì¸í•˜ê¸° ìœ„í•´ ë©”ì„œë“œê°€ ì¶”ê°€ë¨.
+            // ½ÂÀÎ±ÇÇÑÀ» »ç¿ëÇÏ±â À§ÇØ Ãß°¡µÊ.
             app.UseAuthorization();
 
-            ////ê°•ì˜ë‚´ìš©
-            //ì„¸ì…˜ ì§€ì •
+            #region °­ÀÇ³»¿ë
+            //½Å¿øº¸Áõ¸¸
+            app.UseAuthentication();
+
+            //¼¼¼Ç ÁöÁ¤
             //System.InvalidOperationException:
             //'Session has not been configured for this application or request.'
             app.UseSession();
+            #endregion
 
-            // .Net Core 2.1ì˜ UseMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨. 
+            // .Net Core 2.1ÀÇ UseMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ. 
             app.UseEndpoints(endpoints =>
             {
-                // .Net Core 2.1ì˜ UseMvc()ì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ ë©”ì„œë“œëª…ì´ ë³€ê²½ë¨.
+                // .Net Core 2.1ÀÇ UseMvc()¿¡¼­ ´ÙÀ½°ú °°ÀÌ ¸Ş¼­µå¸íÀÌ º¯°æµÊ.
                 endpoints.MapControllerRoute(
                     name: "default",
-                    // .Net Core 2.1ì˜ templateì—ì„œ ë‹¤ìŒê³¼ ê°™ì´ íŒŒë¼ë¯¸í„°ëª…ì´ ë³€ê²½ë¨.
+                    // .Net Core 2.1ÀÇ template¿¡¼­ ´ÙÀ½°ú °°ÀÌ ÆÄ¶ó¹ÌÅÍ¸íÀÌ º¯°æµÊ.
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
