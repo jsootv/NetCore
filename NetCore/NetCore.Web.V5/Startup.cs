@@ -109,12 +109,12 @@ namespace NetCore.Web.V5
             // 아래의 app.UseEndpoints()메서드를 라우팅과 연결하기 위해 사용됨.
             app.UseRouting();
 
-            // 승인권한을 사용하기 위해 추가됨.
-            app.UseAuthorization();
-
             ////강의내용
             //신원보증만
             app.UseAuthentication();
+
+            // 승인권한을 사용하기 위해 추가됨.
+            app.UseAuthorization();
 
             ////강의내용
             //세션 지정
