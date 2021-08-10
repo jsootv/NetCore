@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using NetCore.Data.ViewModels;
 using NetCore.Services.Interfaces;
+using NetCore.Utilities.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
