@@ -263,6 +263,12 @@ namespace NetCore.Web.V5.Controllers
         //[HttpGet("/LogOut")]
         // Action만 지정하던 것에서 Controller까지 같이 지정하는 것으로
         // .Net Core 3.1에서 변경됨.
+        /// <summary>
+        /// 로그아웃 처리
+        /// </summary>
+        /// <param name="cont">컨트롤러명</param>
+        /// <param name="act">액션명</param>
+        /// <returns></returns>
         [HttpPost("/{controller}/LogOut")]
         public async Task<IActionResult> LogOutAsync(string cont = null, string act = null)
         {
