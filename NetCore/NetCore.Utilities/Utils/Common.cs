@@ -12,6 +12,40 @@ namespace NetCore.Utilities.Utils
 {
     public static class Common
     {
+        // Package 추가 : Microsoft.AspNetCore.Routing.Abstractions
+        //         버전 : 2.1.1
+        /// <summary>
+        /// 라우트 데이터값 가져오기
+        /// </summary>
+        /// <param name="routeData">라우트 데이터</param>
+        /// <param name="key">키 값</param>
+        /// <returns></returns>
+        public static string GetRouteDataVal(RouteData routeData, string key)
+        {
+            return routeData.Values[key] != null ? routeData.Values[key] as string : string.Empty;
+        }
+
+        /// <summary>
+        /// 로그인을 요구하지 않는 링크(페이지)인지 체크하라
+        /// </summary>
+        /// <param name="controllerName">컨트롤러명</param>
+        /// <param name="actionName">액션명</param>
+        /// <returns></returns>
+        public static bool CheckTheLinksNeedNotLogIn(string controllerName, string actionName)
+        {
+            List<string> links = new List<string>();
+            links.Add("/Home/Index");
+            links.Add("/Home/Privacy");
+            links.Add("/Home/Error");
+            links.Add("/Membership/Index");
+            links.Add("/Membership/Login");
+            links.Add("/Membership/Register");
+            links.Add("/Data/AES");
+            links.Add("/Data/Cart");
+
+            return links.Any(lnk => string.Equals(lnk, $"/{controllerName}/{actionName}", StringComparison.OrdinalIgnoreCase));
+        }
+        
         /// <summary>
         /// Data Protection 지정하기
         /// </summary>
