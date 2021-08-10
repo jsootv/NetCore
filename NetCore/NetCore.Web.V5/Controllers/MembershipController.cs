@@ -262,12 +262,19 @@ namespace NetCore.Web.V5.Controllers
         //[HttpGet("/LogOut")]
         // Action만 지정하던 것에서 Controller까지 같이 지정하는 것으로
         // .Net Core 3.1에서 변경됨.
-        [HttpGet("/{controller}/LogOut")]
-        public async Task<IActionResult> LogOutAsync()
+        [HttpPost("/{controller}/LogOut")]
+        public async Task<IActionResult> LogOutAsync(string cont = null, string act = null)
         {
             await _context.SignOutAsync(scheme: CookieAuthenticationDefaults.AuthenticationScheme);
 
             TempData["Message"] = "로그아웃이 성공적으로 이루어졌습니다. <br />웹사이트를 원활히 이용하시려면 로그인하세요.";
+            
+            if (!string.IsNullOrWhiteSpace(cont)
+                && !string.IsNullOrWhiteSpace(act)
+                && !Common.CheckTheLinksNeedNotLogIn(cont, act))
+            {
+                return RedirectToAction("Login", "Membership", new { returnUrl = $"/{cont}/{act}" });
+            }
 
             return RedirectToAction("Index", "Membership");
         }
