@@ -35,6 +35,6 @@
     <form method="post" asp-controller="Membership" asp-action="Withdrawn" onsubmit="btnWithdrawn.disabled = true; return true;">
         <input type="hidden" name="UserId" value="@Context.User.Identity.Name" />
         <input type="password" name="Password" placeholder="Password" value="" autofocus />
-        <button type="submit" name="btnWithdrawn" class="btn btn-default">멤버십 사용자 탈퇴</button>
+        <button type="submit" name="btnWithdrawn" class="btn btn-danger">멤버십 사용자 탈퇴</button>
     </form>
 }
