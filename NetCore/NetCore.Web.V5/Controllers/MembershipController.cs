@@ -270,6 +270,7 @@ namespace NetCore.Web.V5.Controllers
         /// <param name="act">액션명</param>
         /// <returns></returns>
         [HttpPost("/{controller}/LogOut")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOutAsync(string cont = null, string act = null)
         {
             await _context.SignOutAsync(scheme: CookieAuthenticationDefaults.AuthenticationScheme);
