@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NetCore.Services.Migrations
 {
-    public partial class AddingUserTable : Migration
+    public partial class AddingTestTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

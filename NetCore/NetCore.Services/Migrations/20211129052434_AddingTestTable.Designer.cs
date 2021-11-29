@@ -10,8 +10,8 @@ using NetCore.Services.Data;
 namespace NetCore.Services.Migrations
 {
     [DbContext(typeof(CodeFirstDbContext))]
-    [Migration("20211126094428_AddingUserTable")]
-    partial class AddingUserTable
+    [Migration("20211129052434_AddingTestTable")]
+    partial class AddingTestTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
